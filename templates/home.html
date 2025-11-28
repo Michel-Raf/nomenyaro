@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<!-- ===== Hero Section ===== -->
+<section class="hero-section">
+    <div class="cover-wrapper">
+        <img src="{{ url_for('static', filename='image/cover.jpg') }}" class="cover-photo" alt="Cover Photo">
+    </div>
+
+    <div class="hero-content">
+        <div class="profile-wrapper">
+            <img src="{{ url_for('static', filename='image/profile.jpg') }}" class="profile-photo" alt="Profile Image">
+        </div>
+
+        <div class="hero-text">
+            <h1 class="hero-name">Jackie Michel Rafanomezantsoa</h1>
+            <h3 class="hero-title">Petroleum Engineering Student & Aspiring Data Scientist</h3>
+            <p class="hero-desc">
+                Passionate about solving engineering challenges with data-driven insights.
+                Petroleum engineering foundation + hands-on data science experience.
+                Building modern digital solutions that bridge energy and technology.
+            </p>
+            <div class="cv mt-4">
+                <a href="{{ url_for('static', filename='downloads/J Michel Rafanomezantsoa.pdf') }}" class="btn btn-accent" download>
+                <i class="bi bi-download me-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding text-center">
+    <div class="container">
+        <h2 class="section-title mb-5">Research Interests</h2>
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="skill-card">
+                    <h4 class="mb-3">Drilling Engineering</h4>
+                    <img src="{{ url_for('static', filename='image/drilling.jpg') }}" alt="Drilling Engineering" class="img-fluid mb-3">
+                    <p>Exploring drilling processes, well design, wellbore integrity and petroleum extraction techniques through simulations and academic research.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-card">
+                    <h4 class="mb-3">Data Science</h4>
+                    <img src="{{ url_for('static', filename='image/data_science.jpg') }}" alt="Data Science" class="img-fluid mb-3">
+                    <p>Analyzing complex datasets, building predictive models, and conducting research to derive insights for academic and engineering projects.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-card">
+                    <h4 class="mb-3">Web Development & Digital Marketing</h4>
+                    <img src="{{ url_for('static', filename='image/web_marketing.jpg') }}" alt="Web Development & Marketing" class="img-fluid mb-3">
+                    <p>Building responsive and modern web applications and developping digital strategies using cutting-edge technologies and best practices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

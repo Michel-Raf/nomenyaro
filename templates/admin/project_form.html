@@ -1,0 +1,52 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}{% if project %}Edit{% else %}Add{% endif %} Project - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% if project %}Edit{% else %}Add New{% endif %} Project</h1>
+    <a href="{{ url_for('admin_projects') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i>Back to Projects
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Project Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{% if project %}{{ project['title'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required>{% if project %}{{ project['description'] }}{% endif %}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="image" name="image"
+                            value="{% if project %}{{ project['image'] }}{% endif %}"
+                            placeholder="image/my_project.png">
+                        {% if project and project['image'] %}
+                            <img src="{{ url_for('static', filename=project['image']) }}"
+                                alt="Current Image" width="100" class="mt-2">
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="link" class="form-label">Project Link</label>
+                        <input type="url" class="form-control" id="link" name="link" value="{% if project %}{{ project['link'] }}{% endif %}" placeholder="https://github.com/...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tags" class="form-label">Tags (comma-separated)</label>
+                        <input type="text" class="form-control" id="tags" name="tags" value="{% if project %}{{ project['tags'] }}{% endif %}" placeholder="Python, Flask, Bootstrap">
+                    </div>
+                    <button type="submit" class="btn btn-accent">
+                        <i class="bi bi-save me-2"></i>{% if project %}Update{% else %}Add{% endif %} Project
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

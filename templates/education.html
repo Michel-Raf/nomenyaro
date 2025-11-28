@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Education - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="section-padding bg-primary-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Education</h2>
+            <p class="lead mt-3">My academic journey and qualifications</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="timeline">
+                    {% for edu in education %}
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-year">
+                                {{ edu['start_year'] }}{% if edu['end_year'] %} - {{ edu['end_year'] }}{% else %} - Present{% endif %}
+                            </span>
+                            <h4 class="mt-2 mb-2" style="color: var(--secondary-color);">{{ edu['degree'] }}</h4>
+                            <h5 class="mb-2" style="color: var(--primary-color);">{{ edu['school'] }}</h5>
+                            {% if edu['field'] %}
+                            <p class="mb-2"><strong>Field:</strong> {{ edu['field'] }}</p>
+                            {% endif %}
+                            <p class="mb-0">{{ edu['details'] }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

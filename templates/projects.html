@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Projects - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">My Projects</h2>
+            <p class="lead mt-3">A showcase of my recent work and accomplishments</p>
+        </div>
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-6">
+                <div class="card project-card">
+                    <img src="{{ url_for('static', filename=project['image']) }}" class="card-img-top" alt="{{ project['title'] }}">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3" style="color: var(--secondary-color);">{{ project['title'] }}</h4>
+                        <p class="card-text mb-3">{{ project['description'] }}</p>
+                        <div class="mb-3">
+                            {% for tag in project['tags'].split(',') %}
+                            <span class="project-tag">{{ tag.strip() }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{{ project['link'] }}" class="btn btn-accent" target="_blank">
+                            <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

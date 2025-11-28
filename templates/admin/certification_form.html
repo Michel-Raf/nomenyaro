@@ -1,0 +1,46 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}{% if certification %}Edit{% else %}Add{% endif %} Certification - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% if certification %}Edit{% else %}Add{% endif %} Certification</h1>
+    <a href="{{ url_for('admin_certifications') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i>Back to Certifications
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Certification Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{% if certification %}{{ certification['title'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="issuer" class="form-label">Issuing Organization</label>
+                        <input type="text" class="form-control" id="issuer" name="issuer" value="{% if certification %}{{ certification['issuer'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Year Obtained</label>
+                        <input type="number" class="form-control" id="year" name="year" value="{% if certification %}{{ certification['year'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="credential_url" class="form-label">Credential URL</label>
+                        <input type="url" class="form-control" id="credential_url" name="credential_url" value="{% if certification %}{{ certification['credential_url'] }}{% endif %}" placeholder="https://...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="4">{% if certification %}{{ certification['description'] }}{% endif %}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-accent">
+                        <i class="bi bi-save me-2"></i>{% if certification %}Update{% else %}Add{% endif %} Certification
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

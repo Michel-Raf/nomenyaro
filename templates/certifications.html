@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Certifications - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Certifications</h2>
+            <p class="lead mt-3">Professional certifications and achievements</p>
+        </div>
+        <div class="row g-4">
+            {% for cert in certifications %}
+            <div class="col-md-6 col-lg-6">
+                <div class="card cert-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-award-fill cert-icon"></i>
+                        <h4 class="card-title mb-3" style="color: var(--secondary-color);">{{ cert['title'] }}</h4>
+                        <h5 class="mb-2" style="color: var(--accent-color);">{{ cert['issuer'] }}</h5>
+                        <p class="mb-3"><strong>Year:</strong> {{ cert['year'] }}</p>
+                        <p class="card-text mb-3">{{ cert['description'] }}</p>
+                        {% if cert['credential_url'] %}
+                        <a href="{{ cert['credential_url'] }}" class="btn btn-accent" target="_blank">
+                            <i class="bi bi-patch-check me-2"></i>View Credential
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}{% if education %}Edit{% else %}Add{% endif %} Education - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% if education %}Edit{% else %}Add{% endif %} Education</h1>
+    <a href="{{ url_for('admin_education') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i>Back to Education
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="school" class="form-label">School/Institution</label>
+                        <input type="text" class="form-control" id="school" name="school" value="{% if education %}{{ education['school'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree</label>
+                        <input type="text" class="form-control" id="degree" name="degree" value="{% if education %}{{ education['degree'] }}{% endif %}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="field" class="form-label">Field of Study</label>
+                        <input type="text" class="form-control" id="field" name="field" value="{% if education %}{{ education['field'] }}{% endif %}">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="start_year" class="form-label">Start Year</label>
+                            <input type="number" class="form-control" id="start_year" name="start_year" value="{% if education %}{{ education['start_year'] }}{% endif %}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="end_year" class="form-label">End Year (leave empty if ongoing)</label>
+                            <input type="number" class="form-control" id="end_year" name="end_year" value="{% if education and education['end_year'] %}{{ education['end_year'] }}{% endif %}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="details" class="form-label">Details</label>
+                        <textarea class="form-control" id="details" name="details" rows="4">{% if education %}{{ education['details'] }}{% endif %}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-accent">
+                        <i class="bi bi-save me-2"></i>{% if education %}Update{% else %}Add{% endif %} Education
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

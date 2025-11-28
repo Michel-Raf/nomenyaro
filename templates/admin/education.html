@@ -1,0 +1,46 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}Manage Education - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Manage Education</h1>
+    <a href="{{ url_for('admin_add_education') }}" class="btn btn-accent">
+        <i class="bi bi-plus-circle me-2"></i>Add Education
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead style="background-color: var(--secondary-color); color: white;">
+            <tr>
+                <th>ID</th>
+                <th>School</th>
+                <th>Degree</th>
+                <th>Field</th>
+                <th>Years</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for edu in education %}
+            <tr>
+                <td>{{ edu['id'] }}</td>
+                <td>{{ edu['school'] }}</td>
+                <td>{{ edu['degree'] }}</td>
+                <td>{{ edu['field'] }}</td>
+                <td>{{ edu['start_year'] }} - {% if edu['end_year'] %}{{ edu['end_year'] }}{% else %}Present{% endif %}</td>
+                <td>
+                    <a href="{{ url_for('admin_edit_education', id=edu['id']) }}" class="btn btn-sm btn-primary">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="{{ url_for('admin_delete_education', id=edu['id']) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this education record?')">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

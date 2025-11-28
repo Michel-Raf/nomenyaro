@@ -1,0 +1,44 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}Manage Certifications - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Manage Certifications</h1>
+    <a href="{{ url_for('admin_add_certification') }}" class="btn btn-accent">
+        <i class="bi bi-plus-circle me-2"></i>Add Certification
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead style="background-color: var(--secondary-color); color: white;">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Issuer</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cert in certifications %}
+            <tr>
+                <td>{{ cert['id'] }}</td>
+                <td>{{ cert['title'] }}</td>
+                <td>{{ cert['issuer'] }}</td>
+                <td>{{ cert['year'] }}</td>
+                <td>
+                    <a href="{{ url_for('admin_edit_certification', id=cert['id']) }}" class="btn btn-sm btn-primary">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="{{ url_for('admin_delete_certification', id=cert['id']) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this certification?')">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
