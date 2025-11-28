@@ -156,6 +156,40 @@ body {
     position: relative;
     margin-top: -5px;
     gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column; /* Stack image over text */
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero-name {
+        font-size: 1.6rem;
+    }
+
+    .hero-title {
+        font-size: 1rem;
+    }
 }
 
 @keyframes float {
@@ -506,4 +540,5 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+
 
