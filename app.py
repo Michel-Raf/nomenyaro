@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-change-in-production'
 
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgres://username:password@localhost:5432/yourdb')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

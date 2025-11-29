@@ -3,7 +3,7 @@ import psycopg2
 from psycopg2 import sql
 from datetime import datetime
 
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgres://username:password@localhost:5432/yourdb')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 def init_database():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
