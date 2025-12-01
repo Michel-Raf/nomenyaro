@@ -301,6 +301,12 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+.skill-card img {
+    width: 736px;
+    height: 981px;
+    object-fit: cover; /* keeps image centered & prevents distortion */
+    border-radius: 8px; /* optional: keeps same rounded style */
+}
 
 .progress {
     height: 25px;
@@ -540,6 +546,7 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+
 
 
 
