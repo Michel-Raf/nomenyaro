@@ -302,8 +302,8 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 .skill-card img {
-    width: 736px;
-    height: 981px;
+    width: 640px;
+    height: 740px;
     object-fit: cover; /* keeps image centered & prevents distortion */
     border-radius: 8px; /* optional: keeps same rounded style */
 }
@@ -546,6 +546,7 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+
 
 
 
