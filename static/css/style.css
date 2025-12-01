@@ -341,9 +341,11 @@ body {
 }
 
 .project-card img {
-    height: 250px;
-    object-fit: cover;
+    width: 736px;
+    height: 981px;
+    object-fit: cover;  /* keeps good cropping */
     transition: transform 0.5s ease;
+    display: block;  /* removes extra spacing issues */
 }
 
 .project-card:hover img {
@@ -540,5 +542,6 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+
 
 
