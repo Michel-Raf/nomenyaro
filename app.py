@@ -6,14 +6,23 @@ import psycopg2.extras
 from datetime import datetime
 import os
 from werkzeug.utils import secure_filename
-
+from dotenv import load_dotenv
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-change-in-production'
 
 # --- DATABASE CONFIG ---
-DATABASE_URL = "postgresql://neondb_owner:npg_0WjrBKgt5ZhF@ep-small-smoke-a4d61e4r-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+# Load .env locally
+load_dotenv()
+
+# Use environment variable for DATABASE_URL
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable not set")
 
 def get_db():
+    """Return a new database connection."""
+    # Parse URL if needed, psycopg2 can handle full URL directly
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
 
@@ -526,3 +535,4 @@ def admin_messages():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
