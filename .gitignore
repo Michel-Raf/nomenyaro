@@ -1,1 +1,7 @@
 portfolio.db
+__pycache__/
+.env
+venv/
+.venv/
+instance/
+*.sqlite3
