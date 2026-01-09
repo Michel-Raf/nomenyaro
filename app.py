@@ -12,7 +12,7 @@ app.secret_key = 'your-secret-key-change-in-production'
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 
-UPLOAD_FOLDER = 'static/images'
+UPLOAD_FOLDER = 'static/image'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
