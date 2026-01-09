@@ -10,8 +10,35 @@
         </div>
         <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
-                <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="About Me" class="img-fluid rounded shadow">
+                <div class="about-image-wrapper">
+                    <img id="about-img"
+                        src="{{ url_for('static', filename='image/image1.jpg') }}"
+                        alt="About Me">
+                </div>
             </div>
+
+            <script>
+                const images = [
+                    "{{ url_for('static', filename='image/image1.jpeg') }}",
+                    "{{ url_for('static', filename='image/image2.jpeg') }}",
+                    "{{ url_for('static', filename='image/image3.jpeg') }}",
+                    "{{ url_for('static', filename='image/image4.jpeg') }}",
+                    "{{ url_for('static', filename='image/image5.jpeg') }}",
+                    "{{ url_for('static', filename='image/image6.jpeg') }}",
+                    "{{ url_for('static', filename='image/image7.jpeg') }}",
+                    "{{ url_for('static', filename='image/image8.jpeg') }}",
+                    "{{ url_for('static', filename='image/image9.jpeg') }}",
+                    "{{ url_for('static', filename='image/image10.jpeg') }}"
+                ];
+
+                let index = 0;
+                const aboutImg = document.getElementById("about-img");
+
+                setInterval(() => {
+                    index = (index + 1) % images.length;
+                    aboutImg.src = images[index];
+                }, 5000); // change every 3 seconds
+            </script>
             <div class="col-lg-7">
                 <h3 class="mb-4" style="color: var(--secondary-color);">Hello! I'm Michel Rafanomezantsoa</h3>
                 <p class="mb-4 about-text">
