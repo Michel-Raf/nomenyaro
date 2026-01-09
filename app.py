@@ -136,20 +136,7 @@ def init_database():
              2021,
              'Specialized in Machine Learning and AI. Completed thesis on Deep Learning applications in Computer Vision.'),
 
-            ("Ecole Supérieure Polytechnique d'Antananarivo",
-             'Bachelor of Engineering',
-             'Petroleum Engineering',
-             2015,
-             2019,
-             'Graduated with honors. Focus on full-stack web development and database systems. Active member of CS club and hackathon participant.'),
-
-            ('Online Bootcamp',
-             'Certificate',
-             'Full Stack Web Development',
-             2014,
-             2015,
-             'Intensive 6-month program covering HTML, CSS, JavaScript, Python, databases, and deployment.')
-        ]
+            ]
         for e in education:
             cur.execute(
                 'INSERT INTO education (school, degree, field, start_year, end_year, details) VALUES (%s, %s, %s, %s, %s, %s)',

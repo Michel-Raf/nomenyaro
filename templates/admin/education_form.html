@@ -39,7 +39,33 @@
                     </div>
                     <div class="mb-3">
                         <label for="details" class="form-label">Details</label>
-                        <textarea class="form-control" id="details" name="details" rows="4">{% if education %}{{ education['details'] }}{% endif %}</textarea>
+                        <small class="text-muted">
+                        Use the following format:
+                        <br>
+                        <strong>Relevant coursework:</strong><br>
+                        - Course 1<br>
+                        - Course 2<br><br>
+                        <strong>Thesis:</strong><br>
+                        Title<br>
+                        Expected: YYYY-MM
+                        </small>
+                        <textarea
+                            class="form-control mt-2"
+                            id="details"
+                            name="details"
+                            rows="8"
+                            placeholder="Relevant coursework:
+                        - Drilling and Production Engineering
+                        - Reservoir Engineering
+                        - Advanced Petroleum Exploration
+                        - Bioenergy & New Energy
+                        - Research Methodology
+
+                        Thesis:
+                        Intelligent Oil and Gas Engineering: Real-Time Blowout Prediction Using LSTM-Based Deep Learning Model
+                        Expected: 2026-06"
+                        >{% if education %}{{ education['details'] }}{% endif %}</textarea>
+
                     </div>
                     <button type="submit" class="btn btn-accent">
                         <i class="bi bi-save me-2"></i>{% if education %}Update{% else %}Add{% endif %} Education

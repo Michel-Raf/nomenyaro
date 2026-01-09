@@ -23,7 +23,21 @@
                             {% if edu['field'] %}
                             <p class="mb-2"><strong>Field:</strong> {{ edu['field'] }}</p>
                             {% endif %}
-                            <p class="mb-0">{{ edu['details'] }}</p>
+                            
+                            {% if edu.details %}
+                                {% set lines = edu.details.split('\n') %}
+                                <ul class="mt-2">
+                                {% for line in lines %}
+                                    {% if line.startswith('- ') %}
+                                    <li>{{ line[2:] }}</li>
+                                    {% elif ':' in line %}
+                                    <li><strong>{{ line }}</strong></li>
+                                    {% elif line.strip() %}
+                                    <li>{{ line }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
