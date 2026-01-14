@@ -375,9 +375,10 @@ def admin_add_education():
     if request.method == 'POST': 
         school = request.form.get('school') 
         degree = request.form.get('degree') 
-        field = request.form.get('field') 
-        start_year = request.form.get('start_year') 
-        end_year = request.form.get('end_year') 
+        field = request.form.get('field')
+        start_year = int(request.form.get('start_year'))
+        end_year_raw = request.form.get('end_year')
+        end_year = int(end_year_raw) if end_year_raw else None
         details = request.form.get('details') 
         conn = get_db() 
         cur = conn.cursor() 
@@ -513,3 +514,4 @@ def admin_messages():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
